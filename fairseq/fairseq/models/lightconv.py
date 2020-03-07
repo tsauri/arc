@@ -914,9 +914,9 @@ def arclc_d(args):
 def arclc_e(args):
     args.encoder_embed_path = getattr(args, 'encoder_embed_path', None)
     args.encoder_embed_dim = getattr(args, 'encoder_embed_dim', 64)
-    args.encoder_ffn_embed_dim = getattr(args, 'encoder_ffn_embed_dim', 512)
+    args.encoder_ffn_embed_dim = getattr(args, 'encoder_ffn_embed_dim', 384)
     args.encoder_layers = getattr(args, 'encoder_layers', 7)
-    args.encoder_attention_heads = getattr(args, 'encoder_attention_heads', 16)
+    args.encoder_attention_heads = getattr(args, 'encoder_attention_heads', 8)
     args.encoder_normalize_before = getattr(args, 'encoder_normalize_before', False)
     args.encoder_learned_pos = getattr(args, 'encoder_learned_pos', True)
     args.decoder_embed_path = getattr(args, 'decoder_embed_path', None)
@@ -927,13 +927,15 @@ def arclc_e(args):
     # args.relu_dropout = getattr(args, 'relu_dropout', 0.1)
     args.decoder_output_dim = getattr(args, 'decoder_output_dim', 64)
     args.decoder_input_dim = getattr(args, 'decoder_input_dim', 64)
-    args.encoder_conv_dim = getattr(args, 'encoder_conv_dim', 512)
-    args.decoder_conv_dim = getattr(args, 'decoder_conv_dim', 512)
+    args.encoder_conv_dim = getattr(args, 'encoder_conv_dim', 384)
+    args.decoder_conv_dim = getattr(args, 'decoder_conv_dim', 384)
 
-    # args.encoder_kernel_size_list = getattr(args, 'encoder_kernel_size_list', [3, 7, 15, 31, 31, 31, 31])
-    # args.decoder_kernel_size_list = getattr(args, 'decoder_kernel_size_list', [3, 7, 15, 31, 31, 31])
-    args.encoder_kernel_size_list = getattr(args, 'encoder_kernel_size_list', [31, 63, 127, 255, 255, 255, 255])
-    args.decoder_kernel_size_list = getattr(args, 'decoder_kernel_size_list', [31, 63, 127, 255, 255, 255])
+    # args.encoder_kernel_size_list = getattr(args, 'encoder_kernel_size_list', [127, 7, 15, 31, 31, 31, 31])
+    # args.decoder_kernel_size_list = getattr(args, 'decoder_kernel_size_list', [127, 7, 15, 31, 31, 31])
+    args.encoder_kernel_size_list = getattr(args, 'encoder_kernel_size_list', [63, 63, 63, 63, 127, 127, 127])
+    args.decoder_kernel_size_list = getattr(args, 'decoder_kernel_size_list', [63, 63, 63 ,127, 127, 255])
+    # args.encoder_kernel_size_list = getattr(args, 'encoder_kernel_size_list', [31, 63, 127, 255, 255, 255, 255])
+    # args.decoder_kernel_size_list = getattr(args, 'decoder_kernel_size_list', [31, 63, 127, 255, 255, 255])
 
 
     arclc_a(args)
