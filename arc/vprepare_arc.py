@@ -86,11 +86,9 @@ def augment(x, args, rands):
         x = np.array(x)
         temp_x = scipy.ndimage.zoom(x, (strx, stry))
         while temp_x.shape[0] > 30 or temp_x.shape[1] > 30:
+            strx = max(1, strx-.1)
+            stry = max(1, stry-.1)
             temp_x = scipy.ndimage.zoom(x, (strx, stry))
-            strx -= .1
-            stry -= .1
-            strx = max(1, strx)
-            stry = max(1, stry)
         return temp_x.tolist()
 
     def shear_roll(x, shx, shy):
